@@ -1,0 +1,34 @@
+html
+head
+
+
+- each gif in gifs
+	img.mover(src="/images/"+gif.filename+"?"+time, style="display:none")
+
+input(id="fileupload", type="file", name="files[]", multiple, style="display:none; z-index:-999999;")
+
+script(src="/javascripts/libs/jquery-1.7.1.min.js")
+script(src="/javascripts/script.js")
+script(src="/javascripts/libs/jquery.ui.widget.js")
+script(src="/javascripts/jquery.iframe-transport.js")
+script(src="/javascripts/jquery.fileupload.js")
+script(type='text/javascript')
+	$(function () {
+		$('#fileupload').fileupload({
+			dataType: 'json',
+			url: '/file-upload',
+			done: function (e, data) {
+			}
+		});
+	});
+	
+script(src="/socket.io/socket.io.js")
+script(type='text/javascript')
+	var socket = io.connect();
+	socket.on('newfile', function (data) {
+		console.log(data);
+		$('img:last').after("<img class='mover' src='/images/" + data.filename + ".gif?" + new Date().getTime() + "' style='display:none'>");
+		$('img:last').load(function() {
+			movers.push(new Mover(this));
+		});
+	});
