@@ -1,0 +1,15 @@
+GIF SPACE
+
+All of the code to get gif_space up and running.
+
+Server:
+Runs on node.js, using express and socket.io.
+Uses mongodb for the database.
+
+Client:
+jquery and stuff.
+
+How to run?
+
+npm install -d
+node app.js
