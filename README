@@ -13,3 +13,6 @@ How to run?
 
 npm install -d
 node app.js
+
+then you would access it by entering the following if your web browser:
+http://localhost:8080
