@@ -104,7 +104,9 @@ function doUpdate() {
 
 jQuery(document).ready(function($) {
     
-    $('.mover').load(function() {
+    $('.mover').each(function(){
+	   $(this).attr('src',$(this).attr('src')+'?'+new Date().getTime())  
+	}).load(function() {
         movers.push(new Mover(this));
     });
 
