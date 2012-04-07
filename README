@@ -1,4 +1,6 @@
-GIF SPACE
+## gif_space
+
+This is configured to run locally, you might want to npm install forever to run it on the amazon cloud. 
 
 All of the code to get gif_space up and running.
 
