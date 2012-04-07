@@ -21,7 +21,7 @@ GifProvider.prototype.findAll = function(callback) {
     this.getCollection(function(error, gif_collection) {
         if(error) callback(error)
         else {
-            gif_collection.find().toArray(function(error, results) {
+            gif_collection.find().sort({$natural:-1}).limit(50).toArray(function(error, results) {
                 if(error) callback(error)
                 else callback(null, results)
             });

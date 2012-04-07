@@ -26,9 +26,12 @@ script(src="/socket.io/socket.io.js")
 script(type='text/javascript')
 	var socket = io.connect();
 	socket.on('newfile', function (data) {
-		console.log(data);
 		$('img:last').after("<img class='mover' src='/images/" + data.filename + ".gif?" + new Date().getTime() + "' style='display:none'>");
 		$('img:last').load(function() {
 			movers.push(new Mover(this));
 		});
+		if(movers.length > 50) {
+			movers.splice(0,1);
+			$('img:first').remove();
+		}
 	});
